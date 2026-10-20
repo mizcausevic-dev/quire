@@ -22,7 +22,7 @@
     "@fontsource/fraunces": "^5.2.9",
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/public-sans": "^5.2.7",
-    "next": "^15.5.18",
+    "next": "^16.4.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "server-only": "^0.0.1",
