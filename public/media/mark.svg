@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#1c1712"/>
+  <rect x="48" y="48" width="36" height="36" fill="#8e2433"/>
+  <text x="48" y="310" fill="#f3eee4" font-family="Georgia, serif" font-size="92">Fictional mark</text>
+  <text x="48" y="380" fill="#e6dece" font-family="Georgia, serif" font-size="28">Demonstration image, not a product screenshot</text>
+</svg>

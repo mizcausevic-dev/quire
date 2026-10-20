@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quire system map</title>
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; font-family: "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+  main { width: min(1080px, calc(100% - 2rem)); margin: 0 auto; padding: 1.5rem 0 3rem; }
+  h1, h2 { font-family: Georgia, serif; letter-spacing: -0.03em; }
+  .bar { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0; }
+  button { font: inherit; background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius); padding: .4rem .7rem; }
+  button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+  .grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1rem; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
+  svg { width: 100%; height: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; border-bottom: 1px solid var(--line); padding: .45rem; vertical-align: top; }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+  body[data-theme="bento"][data-mode="light"] { --bg:#f4f1ea; --panel:#fff; --text:#1c1915; --accent:#e85d4c; --line:#e4ddd2; --radius:22px; --shadow:0 10px 30px rgba(40,30,20,.06); }
+  body[data-theme="bento"][data-mode="dark"] { --bg:#16130f; --panel:#241f1a; --text:#f6f1e8; --accent:#ffb4a2; --line:#3a322b; --radius:22px; --shadow:none; }
+  body[data-theme="cosmic"][data-mode="light"] { --bg:#f5f3ff; --panel:#fff; --text:#241b42; --accent:#6d5efc; --line:#ddd6ff; --radius:18px; --shadow:none; }
+  body[data-theme="cosmic"][data-mode="dark"] { --bg:#07080f; --panel:#121526; --text:#e7e9f4; --accent:#7cffb2; --line:#2a3148; --radius:18px; --shadow:none; }
+  body[data-theme="swiss"][data-mode="light"] { --bg:#fff; --panel:#fff; --text:#111; --accent:#e10600; --line:#111; --radius:0; --shadow:none; }
+  body[data-theme="swiss"][data-mode="dark"] { --bg:#0e0e0e; --panel:#161616; --text:#f5f5f5; --accent:#ff3b30; --line:#f5f5f5; --radius:0; --shadow:none; }
+  body[data-theme="aqua"][data-mode="light"] { --bg:#e5fbff; --panel:#fff; --text:#07323a; --accent:#0aa2c0; --line:#9ad7e4; --radius:24px; --shadow:0 8px 16px rgba(10,120,150,.12); }
+  body[data-theme="aqua"][data-mode="dark"] { --bg:#04252c; --panel:#08343d; --text:#dff8ff; --accent:#7eebff; --line:#1c6674; --radius:24px; --shadow:none; }
+  body[data-theme="brutalist"][data-mode="light"] { --bg:#fff36b; --panel:#fff; --text:#111; --accent:#111; --line:#111; --radius:0; --shadow:6px 6px 0 #111; }
+  body[data-theme="brutalist"][data-mode="dark"] { --bg:#111; --panel:#1b1b1b; --text:#fff36b; --accent:#fff36b; --line:#fff36b; --radius:0; --shadow:6px 6px 0 #fff36b; }
+  body[data-theme="steel"][data-mode="light"] { --bg:#e6e8eb; --panel:#f4f5f6; --text:#1c2128; --accent:#8a5a12; --line:#b7bdc6; --radius:4px; --shadow:none; }
+  body[data-theme="steel"][data-mode="dark"] { --bg:#121417; --panel:#1c2128; --text:#d5d8de; --accent:#e0a44b; --line:#3a424d; --radius:4px; --shadow:none; }
+  body[data-theme="parchment"][data-mode="light"] { --bg:#f3eee4; --panel:#f7f3ea; --text:#1c1712; --accent:#1c4038; --line:#d5cbb8; --radius:2px; --shadow:none; }
+  body[data-theme="parchment"][data-mode="dark"] { --bg:#221c16; --panel:#2c241c; --text:#f3eee4; --accent:#e7b26a; --line:#4a3d32; --radius:2px; --shadow:none; }
+</style>
+</head>
+<body data-theme="cosmic" data-mode="dark">
+<main>
+  <p>Quire</p>
+  <h1>Publication, ownership, and payment stay on separate tracks.</h1>
+  <div class="bar" id="themes" role="group" aria-label="Theme"></div>
+  <div class="grid">
+    <section class="panel">
+      <h2>Listing state</h2>
+      <svg viewBox="0 0 640 280" role="img" aria-label="Draft and submitted lead to published. A later revision waits beside the live version.">
+        <rect x="20" y="30" width="120" height="48" rx="8" fill="none" stroke="currentColor"/>
+        <text x="80" y="58" text-anchor="middle" fill="currentColor">Draft</text>
+        <rect x="190" y="30" width="130" height="48" rx="8" fill="none" stroke="currentColor"/>
+        <text x="255" y="58" text-anchor="middle" fill="currentColor">Submitted</text>
+        <rect x="370" y="30" width="130" height="48" rx="8" fill="none" stroke="currentColor"/>
+        <text x="435" y="58" text-anchor="middle" fill="currentColor">Published</text>
+        <rect x="190" y="130" width="130" height="48" rx="8" fill="none" stroke="currentColor"/>
+        <text x="255" y="158" text-anchor="middle" fill="currentColor">Rejected</text>
+        <rect x="370" y="130" width="130" height="48" rx="8" fill="none" stroke="currentColor"/>
+        <text x="435" y="158" text-anchor="middle" fill="currentColor">Archived</text>
+        <rect x="370" y="210" width="220" height="48" rx="8" fill="none" stroke="currentColor"/>
+        <text x="480" y="238" text-anchor="middle" fill="currentColor">Revision in review</text>
+        <path d="M140 54 H190 M320 54 H370 M255 78 V130 M435 78 V130 M480 178 V210" fill="none" stroke="currentColor"/>
+      </svg>
+      <p>The public page and the search index read the published revision. The box labeled "Revision in review" does not replace it.</p>
+    </section>
+    <section class="panel">
+      <h2>Three checks</h2>
+      <table>
+        <thead><tr><th>Question</th><th>Record</th></tr></thead>
+        <tbody>
+          <tr><td>Who is this person?</td><td>users.role</td></tr>
+          <tr><td>Which org are they in?</td><td>organization_memberships</td></tr>
+          <tr><td>Which listing may they edit?</td><td>listing_ownerships</td></tr>
+          <tr><td>Is the plan paid?</td><td>entitlements.provider_confirmed</td></tr>
+          <tr><td>Is a placement on?</td><td>starts_at and ends_at</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</main>
+<script>
+const themes = [["bento","Bento Grid"],["cosmic","Cosmic Cyber"],["swiss","Swiss Architect"],["aqua","Aqua Web 2.0"],["brutalist","Pop Brutalist"],["steel","Steel Tactical"],["parchment","Parchment"]];
+const bar = document.getElementById("themes");
+const savedTheme = localStorage.getItem("quire-map-theme") || "cosmic";
+const savedMode = localStorage.getItem("quire-map-mode") || "dark";
+document.body.dataset.theme = savedTheme;
+document.body.dataset.mode = savedMode;
+function paint() {
+  bar.innerHTML = "";
+  for (const [id, label] of themes) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = label;
+    button.setAttribute("aria-pressed", String(document.body.dataset.theme === id));
+    button.addEventListener("click", () => {
+      document.body.dataset.theme = id;
+      localStorage.setItem("quire-map-theme", id);
+      paint();
+    });
+    bar.appendChild(button);
+  }
+  const mode = document.createElement("button");
+  mode.type = "button";
+  mode.textContent = document.body.dataset.mode === "dark" ? "Dark" : "Light";
+  mode.setAttribute("aria-pressed", String(document.body.dataset.mode === "dark"));
+  mode.addEventListener("click", () => {
+    document.body.dataset.mode = document.body.dataset.mode === "dark" ? "light" : "dark";
+    localStorage.setItem("quire-map-mode", document.body.dataset.mode);
+    paint();
+  });
+  bar.appendChild(mode);
+}
+paint();
+</script>
+</body>
+</html>

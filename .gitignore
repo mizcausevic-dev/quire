@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+preview-dist
+data/*.sqlite
+data/*.sqlite-*
+data/*.sqlite-journal
+data/imports/*
+data/uploads/*
+!data/imports/.gitkeep
+!data/uploads/.gitkeep
+.env
+.env.local
+tsconfig.tsbuildinfo
+*.log
+.DS_Store
