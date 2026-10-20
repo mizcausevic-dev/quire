@@ -1,0 +1,9 @@
+:root { --paper:#f3eee4; --ink:#1c1712; --rule:#8e2433; --line:#d5cbb8; --serif:Georgia,serif; --sans:"Segoe UI",sans-serif; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.5; }
+.wrap { width:min(960px, calc(100% - 2rem)); margin:0 auto; }
+.banner { background:#1c1712; color:#f3eee4; padding:.6rem 1rem; font-size:.85rem; }
+.wordmark { font-family:var(--serif); font-size:3rem; color:inherit; text-decoration:none; }
+a { color:#1c4038; }
+.entry { border-top:1px solid var(--line); padding:.8rem 0; }
+h1,h2,h3 { font-family:var(--serif); letter-spacing:-.03em; }
+.sponsored { background:#efe6cf; border-left:4px solid #7d6230; padding:.7rem 1rem; }
